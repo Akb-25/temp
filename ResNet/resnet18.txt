@@ -1,0 +1,517 @@
+cuda
+ResNet(
+  (conv1): PBSequential(
+    (model): Sequential(
+      (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+      (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (relu): ReLU(inplace=True)
+  (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (layer1): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 8, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(8, 8, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(8, 8, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(8, 8, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer2): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(8, 16, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer3): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(16, 32, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer4): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+  (fc): Linear(in_features=64, out_features=1000, bias=True)
+)
+layer1.0.conv1
+layer1.1.conv1
+layer2.0.conv1
+layer2.1.conv1
+layer3.0.conv1
+layer3.1.conv1
+layer4.0.conv1
+layer4.1.conv1
+Length of layer bounds  8
+selected  UNIMP indices  [[0], [1], [0, 9], [3, 8], [14, 5, 23, 31], [25, 0, 13, 14], [16, 0, 29, 22, 59, 30, 31, 11], [3, 4, 24, 46, 48, 33, 49, 32]]
+The length of indices is  8
+7
+7
+14
+14
+28
+28
+56
+56
+ResNet(
+  (conv1): PBSequential(
+    (model): Sequential(
+      (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+      (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (relu): ReLU(inplace=True)
+  (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (layer1): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 7, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(7, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(7, 8, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(7, 8, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(8, 7, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(7, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(7, 8, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer2): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(8, 14, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(14, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(14, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(14, 16, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(16, 14, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(14, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(14, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer3): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(16, 28, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(28, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(28, 32, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(32, 28, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(28, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(28, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer4): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(32, 56, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(56, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(56, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(56, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(64, 56, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(56, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(56, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+  (fc): Linear(in_features=64, out_features=1000, bias=True)
+)
+Training the model after pruning
+/usr/lib/python3/dist-packages/requests/__init__.py:89: RequestsDependencyWarning: urllib3 (1.26.12) or chardet (3.0.4) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({}) doesn't match a supported "
+/usr/local/lib/python3.8/dist-packages/torchvision/models/_utils.py:135: UserWarning: Using 'weights' as positional parameter(s) is deprecated since 0.13 and may be removed in the future. Please use keyword parameter(s) instead.
+  warnings.warn(
+/usr/local/lib/python3.8/dist-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet18_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet18_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+
+---------------Epoch number: 0 ---Train accuracy: 2.5886524822695036 ----Test accuracy: 7.372340425531915 --------------
+
+---------------Epoch number: 1 ---Train accuracy: 14.38209219858156 ----Test accuracy: 24.25 --------------
+
+---------------Epoch number: 2 ---Train accuracy: 28.900709219858157 ----Test accuracy: 37.441489361702125 --------------
+
+---------------Epoch number: 3 ---Train accuracy: 40.920212765957444 ----Test accuracy: 49.06382978723404 --------------
+
+---------------Epoch number: 4 ---Train accuracy: 50.584219858156025 ----Test accuracy: 57.058510638297875 --------------
+
+---------------Epoch number: 5 ---Train accuracy: 57.02925531914894 ----Test accuracy: 62.23936170212766 --------------
+
+---------------Epoch number: 6 ---Train accuracy: 61.04343971631206 ----Test accuracy: 65.45212765957447 --------------
+
+---------------Epoch number: 7 ---Train accuracy: 64.10372340425532 ----Test accuracy: 68.27127659574468 --------------
+
+---------------Epoch number: 8 ---Train accuracy: 66.1604609929078 ----Test accuracy: 70.19148936170212 --------------
+
+---------------Epoch number: 9 ---Train accuracy: 68.23492907801419 ----Test accuracy: 71.3936170212766 --------------
+
+---------------Epoch number: 10 ---Train accuracy: 69.7331560283688 ----Test accuracy: 72.67021276595744 --------------
+
+---------------Epoch number: 11 ---Train accuracy: 70.8918439716312 ----Test accuracy: 73.86170212765957 --------------
+
+---------------Epoch number: 12 ---Train accuracy: 72.04521276595744 ----Test accuracy: 74.77659574468085 --------------
+
+---------------Epoch number: 13 ---Train accuracy: 73.07003546099291 ----Test accuracy: 75.70744680851064 --------------
+
+---------------Epoch number: 14 ---Train accuracy: 73.79078014184397 ----Test accuracy: 76.27127659574468 --------------
+
+---------------Epoch number: 15 ---Train accuracy: 74.37056737588652 ----Test accuracy: 77.0372340425532 --------------
+
+---------------Epoch number: 16 ---Train accuracy: 75.12588652482269 ----Test accuracy: 77.51063829787235 --------------
+
+---------------Epoch number: 17 ---Train accuracy: 75.79698581560284 ----Test accuracy: 77.94148936170212 --------------
+
+---------------Epoch number: 18 ---Train accuracy: 76.15868794326241 ----Test accuracy: 78.30319148936171 --------------
+
+---------------Epoch number: 19 ---Train accuracy: 76.65248226950355 ----Test accuracy: 78.56382978723404 --------------
+
+---------------Epoch number: 20 ---Train accuracy: 77.0372340425532 ----Test accuracy: 79.01063829787235 --------------
+
+---------------Epoch number: 21 ---Train accuracy: 77.53102836879432 ----Test accuracy: 79.5372340425532 --------------
+
+---------------Epoch number: 22 ---Train accuracy: 77.91843971631205 ----Test accuracy: 79.78191489361703 --------------
+
+---------------Epoch number: 23 ---Train accuracy: 78.2668439716312 ----Test accuracy: 79.89893617021276 --------------
+
+---------------Epoch number: 24 ---Train accuracy: 78.40514184397163 ----Test accuracy: 80.44680851063829 --------------
+
+---------------Epoch number: 25 ---Train accuracy: 78.88829787234043 ----Test accuracy: 80.57978723404256 --------------
+
+---------------Epoch number: 26 ---Train accuracy: 79.0540780141844 ----Test accuracy: 80.80851063829788 --------------
+
+---------------Epoch number: 27 ---Train accuracy: 79.322695035461 ----Test accuracy: 81.0372340425532 --------------
+
+---------------Epoch number: 28 ---Train accuracy: 79.5 ----Test accuracy: 81.16489361702128 --------------
+
+---------------Epoch number: 29 ---Train accuracy: 79.91666666666667 ----Test accuracy: 81.32978723404256 --------------
+
+---------------Epoch number: 30 ---Train accuracy: 80.11347517730496 ----Test accuracy: 81.44148936170212 --------------
+
+---------------Epoch number: 31 ---Train accuracy: 80.26241134751773 ----Test accuracy: 81.76595744680851 --------------
+
+---------------Epoch number: 32 ---Train accuracy: 80.36436170212765 ----Test accuracy: 81.80851063829788 --------------
+
+---------------Epoch number: 33 ---Train accuracy: 80.67819148936171 ----Test accuracy: 81.9627659574468 --------------
+
+---------------Epoch number: 34 ---Train accuracy: 80.68262411347517 ----Test accuracy: 82.14893617021276 --------------
+
+---------------Epoch number: 35 ---Train accuracy: 80.86790780141844 ----Test accuracy: 82.41489361702128 --------------
+
+---------------Epoch number: 36 ---Train accuracy: 81.09219858156028 ----Test accuracy: 82.33510638297872 --------------
+
+---------------Epoch number: 37 ---Train accuracy: 81.22163120567376 ----Test accuracy: 82.5 --------------
+
+---------------Epoch number: 38 ---Train accuracy: 81.37588652482269 ----Test accuracy: 82.67021276595744 --------------
+
+---------------Epoch number: 39 ---Train accuracy: 81.61879432624113 ----Test accuracy: 82.74468085106383 --------------
+
+---------------Epoch number: 40 ---Train accuracy: 81.76418439716312 ----Test accuracy: 82.78191489361703 --------------
+
+---------------Epoch number: 41 ---Train accuracy: 81.81294326241135 ----Test accuracy: 82.98936170212765 --------------
+
+---------------Epoch number: 42 ---Train accuracy: 81.94414893617021 ----Test accuracy: 82.82446808510639 --------------
+
+---------------Epoch number: 43 ---Train accuracy: 82.06914893617021 ----Test accuracy: 82.93085106382979 --------------
+
+---------------Epoch number: 44 ---Train accuracy: 82.2517730496454 ----Test accuracy: 83.25531914893617 --------------
+
+---------------Epoch number: 45 ---Train accuracy: 82.49911347517731 ----Test accuracy: 83.23936170212765 --------------
+
+---------------Epoch number: 46 ---Train accuracy: 82.46808510638297 ----Test accuracy: 83.57446808510639 --------------
+
+---------------Epoch number: 47 ---Train accuracy: 82.45744680851064 ----Test accuracy: 83.34042553191489 --------------
+
+---------------Epoch number: 48 ---Train accuracy: 82.54166666666667 ----Test accuracy: 83.57978723404256 --------------
+
+---------------Epoch number: 49 ---Train accuracy: 82.70212765957447 ----Test accuracy: 83.56914893617021 --------------
+
+---------------Epoch number: 50 ---Train accuracy: 82.74556737588652 ----Test accuracy: 83.66489361702128 --------------
+
+---------------Epoch number: 51 ---Train accuracy: 82.91843971631205 ----Test accuracy: 83.89893617021276 --------------
+
+---------------Epoch number: 52 ---Train accuracy: 83.06117021276596 ----Test accuracy: 83.84042553191489 --------------
+
+---------------Epoch number: 53 ---Train accuracy: 83.01595744680851 ----Test accuracy: 83.81382978723404 --------------
+
+---------------Epoch number: 54 ---Train accuracy: 83.13031914893617 ----Test accuracy: 84.17021276595744 --------------
+
+---------------Epoch number: 55 ---Train accuracy: 83.14539007092199 ----Test accuracy: 84.11170212765957 --------------
+
+---------------Epoch number: 56 ---Train accuracy: 83.32358156028369 ----Test accuracy: 84.19680851063829 --------------
+
+---------------Epoch number: 57 ---Train accuracy: 83.4831560283688 ----Test accuracy: 84.16489361702128 --------------
+
+---------------Epoch number: 58 ---Train accuracy: 83.58599290780141 ----Test accuracy: 84.13297872340425 --------------
+
+---------------Epoch number: 59 ---Train accuracy: 83.5877659574468 ----Test accuracy: 84.18617021276596 --------------
+
+---------------Epoch number: 60 ---Train accuracy: 83.76595744680851 ----Test accuracy: 84.44148936170212 --------------
+
+---------------Epoch number: 61 ---Train accuracy: 83.78634751773049 ----Test accuracy: 84.42021276595744 --------------
+
+---------------Epoch number: 62 ---Train accuracy: 83.77570921985816 ----Test accuracy: 84.3936170212766 --------------
+
+---------------Epoch number: 63 ---Train accuracy: 83.89627659574468 ----Test accuracy: 84.57978723404256 --------------
+
+---------------Epoch number: 64 ---Train accuracy: 83.92287234042553 ----Test accuracy: 84.68617021276596 --------------
+
+---------------Epoch number: 65 ---Train accuracy: 83.88829787234043 ----Test accuracy: 84.53191489361703 --------------
+
+---------------Epoch number: 66 ---Train accuracy: 84.052304964539 ----Test accuracy: 84.59042553191489 --------------
+
+---------------Epoch number: 67 ---Train accuracy: 84.09042553191489 ----Test accuracy: 84.44148936170212 --------------
+
+---------------Epoch number: 68 ---Train accuracy: 84.14893617021276 ----Test accuracy: 84.88297872340425 --------------
+
+---------------Epoch number: 69 ---Train accuracy: 84.15602836879432 ----Test accuracy: 84.63297872340425 --------------
+
+---------------Epoch number: 70 ---Train accuracy: 84.27836879432624 ----Test accuracy: 84.76063829787235 --------------
+
+---------------Epoch number: 71 ---Train accuracy: 84.27836879432624 ----Test accuracy: 85.04787234042553 --------------
+
+---------------Epoch number: 72 ---Train accuracy: 84.40425531914893 ----Test accuracy: 85.02127659574468 --------------
+
+---------------Epoch number: 73 ---Train accuracy: 84.34131205673759 ----Test accuracy: 85.03191489361703 --------------
+
+---------------Epoch number: 74 ---Train accuracy: 84.42996453900709 ----Test accuracy: 85.01595744680851 --------------
+
+---------------Epoch number: 75 ---Train accuracy: 84.57624113475177 ----Test accuracy: 85.17553191489361 --------------
+
+---------------Epoch number: 76 ---Train accuracy: 84.55673758865248 ----Test accuracy: 85.04787234042553 --------------
+
+---------------Epoch number: 77 ---Train accuracy: 84.62854609929079 ----Test accuracy: 85.11170212765957 --------------
+
+---------------Epoch number: 78 ---Train accuracy: 84.63120567375887 ----Test accuracy: 85.17021276595744 --------------
+
+---------------Epoch number: 79 ---Train accuracy: 84.66489361702128 ----Test accuracy: 85.26063829787235 --------------
+
+---------------Epoch number: 80 ---Train accuracy: 84.86524822695036 ----Test accuracy: 85.39893617021276 --------------
+
+---------------Epoch number: 81 ---Train accuracy: 84.7668439716312 ----Test accuracy: 85.40425531914893 --------------
+
+---------------Epoch number: 82 ---Train accuracy: 84.85904255319149 ----Test accuracy: 85.2872340425532 --------------
+
+---------------Epoch number: 83 ---Train accuracy: 84.86170212765957 ----Test accuracy: 85.56382978723404 --------------
+
+---------------Epoch number: 84 ---Train accuracy: 84.86613475177305 ----Test accuracy: 85.40425531914893 --------------
+
+---------------Epoch number: 85 ---Train accuracy: 85.00265957446808 ----Test accuracy: 85.47872340425532 --------------
+
+---------------Epoch number: 86 ---Train accuracy: 85.07003546099291 ----Test accuracy: 85.53191489361703 --------------
+
+---------------Epoch number: 87 ---Train accuracy: 85.03457446808511 ----Test accuracy: 85.44680851063829 --------------
+
+---------------Epoch number: 88 ---Train accuracy: 85.17464539007092 ----Test accuracy: 85.5 --------------
+
+---------------Epoch number: 89 ---Train accuracy: 85.19060283687944 ----Test accuracy: 85.48404255319149 --------------
+
+---------------Epoch number: 90 ---Train accuracy: 85.1267730496454 ----Test accuracy: 85.56914893617021 --------------
+
+---------------Epoch number: 91 ---Train accuracy: 85.25 ----Test accuracy: 85.65957446808511 --------------
+
+---------------Epoch number: 92 ---Train accuracy: 85.36790780141844 ----Test accuracy: 85.58510638297872 --------------
+
+---------------Epoch number: 93 ---Train accuracy: 85.30939716312056 ----Test accuracy: 85.62765957446808 --------------
+
+---------------Epoch number: 94 ---Train accuracy: 85.38209219858156 ----Test accuracy: 85.76063829787235 --------------
+
+---------------Epoch number: 95 ---Train accuracy: 85.36436170212765 ----Test accuracy: 85.67021276595744 --------------
+
+---------------Epoch number: 96 ---Train accuracy: 85.47429078014184 ----Test accuracy: 85.72340425531915 --------------
+
+---------------Epoch number: 97 ---Train accuracy: 85.41578014184397 ----Test accuracy: 85.73936170212765 --------------
+
+---------------Epoch number: 98 ---Train accuracy: 85.63209219858156 ----Test accuracy: 85.8563829787234 --------------
+
+---------------Epoch number: 99 ---Train accuracy: 85.56028368794327 ----Test accuracy: 85.81914893617021 --------------
+
+---------------Epoch number: 100 ---Train accuracy: 85.62234042553192 ----Test accuracy: 85.87765957446808 --------------
+
+---------------Epoch number: 101 ---Train accuracy: 85.70833333333333 ----Test accuracy: 85.85106382978724 --------------
+
+---------------Epoch number: 102 ---Train accuracy: 85.66755319148936 ----Test accuracy: 85.94680851063829 --------------
+
+---------------Epoch number: 103 ---Train accuracy: 85.68617021276596 ----Test accuracy: 85.86170212765957 --------------
+
+---------------Epoch number: 104 ---Train accuracy: 85.61790780141844 ----Test accuracy: 85.92021276595744 --------------
+
+---------------Epoch number: 105 ---Train accuracy: 85.69326241134752 ----Test accuracy: 85.84042553191489 --------------
+
+---------------Epoch number: 106 ---Train accuracy: 85.68528368794327 ----Test accuracy: 85.81382978723404 --------------
+
+---------------Epoch number: 107 ---Train accuracy: 85.73581560283688 ----Test accuracy: 85.85106382978724 --------------
+
+---------------Epoch number: 108 ---Train accuracy: 85.75531914893617 ----Test accuracy: 85.84042553191489 --------------
+
+---------------Epoch number: 109 ---Train accuracy: 85.54609929078015 ----Test accuracy: 85.90957446808511 --------------
+
+---------------Epoch number: 110 ---Train accuracy: 85.58687943262412 ----Test accuracy: 85.93617021276596 --------------
+
+---------------Epoch number: 111 ---Train accuracy: 85.67819148936171 ----Test accuracy: 85.88297872340425 --------------
+
+---------------Epoch number: 112 ---Train accuracy: 85.71719858156028 ----Test accuracy: 85.93085106382979 --------------
+
+---------------Epoch number: 113 ---Train accuracy: 85.54166666666667 ----Test accuracy: 85.95212765957447 --------------
+
+---------------Epoch number: 114 ---Train accuracy: 85.65602836879432 ----Test accuracy: 85.95744680851064 --------------
+
+---------------Epoch number: 115 ---Train accuracy: 85.70035460992908 ----Test accuracy: 85.74468085106383 --------------
+
+---------------Epoch number: 116 ---Train accuracy: 85.74024822695036 ----Test accuracy: 85.75 --------------
+
+---------------Epoch number: 117 ---Train accuracy: 85.72251773049645 ----Test accuracy: 85.98404255319149 --------------
+
+---------------Epoch number: 118 ---Train accuracy: 85.7517730496454 ----Test accuracy: 85.90957446808511 --------------
+
+---------------Epoch number: 119 ---Train accuracy: 85.75531914893617 ----Test accuracy: 85.95212765957447 --------------
+
+---------------Epoch number: 120 ---Train accuracy: 85.84840425531915 ----Test accuracy: 86.01063829787235 --------------
+
+---------------Epoch number: 121 ---Train accuracy: 85.70212765957447 ----Test accuracy: 85.8936170212766 --------------
+
+---------------Epoch number: 122 ---Train accuracy: 85.64982269503547 ----Test accuracy: 85.88297872340425 --------------
+
+---------------Epoch number: 123 ---Train accuracy: 85.7668439716312 ----Test accuracy: 85.94148936170212 --------------
+
+---------------Epoch number: 124 ---Train accuracy: 85.68794326241135 ----Test accuracy: 85.95212765957447 --------------
+
+---------------Epoch number: 125 ---Train accuracy: 85.77570921985816 ----Test accuracy: 85.89893617021276 --------------
+
+---------------Epoch number: 126 ---Train accuracy: 85.75620567375887 ----Test accuracy: 85.90425531914893 --------------
+
+---------------Epoch number: 127 ---Train accuracy: 85.70478723404256 ----Test accuracy: 85.93617021276596 --------------
+
+---------------Epoch number: 128 ---Train accuracy: 85.89007092198581 ----Test accuracy: 85.99468085106383 --------------
+
+---------------Epoch number: 129 ---Train accuracy: 85.76595744680851 ----Test accuracy: 85.86170212765957 --------------
+
+---------------Epoch number: 130 ---Train accuracy: 85.82624113475177 ----Test accuracy: 86.00531914893617 --------------
+
+---------------Epoch number: 131 ---Train accuracy: 85.83244680851064 ----Test accuracy: 85.98936170212765 --------------
+
+---------------Epoch number: 132 ---Train accuracy: 85.87765957446808 ----Test accuracy: 85.92553191489361 --------------
+
+---------------Epoch number: 133 ---Train accuracy: 85.84929078014184 ----Test accuracy: 85.98404255319149 --------------
+
+---------------Epoch number: 134 ---Train accuracy: 85.82801418439716 ----Test accuracy: 85.86170212765957 --------------
+
+---------------Epoch number: 135 ---Train accuracy: 85.86081560283688 ----Test accuracy: 85.79787234042553 --------------
+
+---------------Epoch number: 136 ---Train accuracy: 85.75354609929079 ----Test accuracy: 86.02127659574468 --------------
+
+---------------Epoch number: 137 ---Train accuracy: 85.81737588652483 ----Test accuracy: 86.11702127659575 --------------
+
+---------------Epoch number: 138 ---Train accuracy: 85.70478723404256 ----Test accuracy: 86.07978723404256 --------------
+
+---------------Epoch number: 139 ---Train accuracy: 85.76418439716312 ----Test accuracy: 86.01063829787235 --------------
+
+---------------Epoch number: 140 ---Train accuracy: 85.83421985815603 ----Test accuracy: 85.93617021276596 --------------
+
+---------------Epoch number: 141 ---Train accuracy: 85.89716312056737 ----Test accuracy: 85.98936170212765 --------------
+
+---------------Epoch number: 142 ---Train accuracy: 85.822695035461 ----Test accuracy: 85.96808510638297 --------------
+
+---------------Epoch number: 143 ---Train accuracy: 85.78989361702128 ----Test accuracy: 85.9627659574468 --------------
+
+---------------Epoch number: 144 ---Train accuracy: 85.87588652482269 ----Test accuracy: 86.02127659574468 --------------
+
+---------------Epoch number: 145 ---Train accuracy: 85.67996453900709 ----Test accuracy: 86.09042553191489 --------------
+
+---------------Epoch number: 146 ---Train accuracy: 85.96897163120568 ----Test accuracy: 86.07446808510639 --------------
+
+---------------Epoch number: 147 ---Train accuracy: 85.84929078014184 ----Test accuracy: 86.06382978723404 --------------
+
+---------------Epoch number: 148 ---Train accuracy: 85.90868794326241 ----Test accuracy: 86.09042553191489 --------------
+
+---------------Epoch number: 149 ---Train accuracy: 85.79787234042553 ----Test accuracy: 85.83510638297872 --------------
+Traceback (most recent call last):
+  File "resnet18.py", line 556, in <module>
+    main()
+  File "resnet18.py", line 408, in main
+    print("Best test acc here is: ", best_Test_acc);   
+NameError: name 'best_Test_acc' is not defined
