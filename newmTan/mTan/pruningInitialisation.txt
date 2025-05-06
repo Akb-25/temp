@@ -1,0 +1,535 @@
+Namespace(alpha=100, batch_size=50, classif=True, classify_pertp=False, dataset='physionet', dec='mtan_rnn', dec_num_heads=1, embed_time=128, enc='mtan_rnn', enc_num_heads=1, fname=None, freq=10.0, gen_hidden=50, justTest=0, k_iwae=1, kl=True, latent_dim=50, learn_emb=True, lr=0.0001, multiplier=0.0625, n=8000, niters=300, nonormalize=False, norm=True, num_ref_points=128, old_split=1, quantization=0.016, rec_hidden=64, save=1, seed=0, split=0, std=0.01) 34233
+The device being used here is:  cuda
+4000
+tensor(362.) tensor(82.) tensor(110.)
+torch.Size([2560, 190, 83]) torch.Size([2560, 1]) torch.Size([640, 163, 83]) torch.Size([640, 1]) torch.Size([800, 203, 83]) torch.Size([800, 1])
+starting main call
+fullModel(
+  (rec): enc_mtan_rnn(
+    (att): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x multiTimeAttention(
+          (linears): ModuleList(
+            (0-1): 2 x Linear(in_features=8, out_features=8, bias=True)
+            (2): Linear(in_features=82, out_features=4, bias=True)
+          )
+        )
+      )
+    )
+    (gru_rnn): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x GRU(4, 4, batch_first=True, bidirectional=True)
+      )
+    )
+    (hiddens_to_z0): Sequential(
+      (0): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=8, out_features=3, bias=True)
+        )
+      )
+      (1): ReLU()
+      (2): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=3, out_features=6, bias=True)
+        )
+      )
+    )
+    (embedder1): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x mtan_time_embedder(
+          (periodic): Linear(in_features=1, out_features=7, bias=True)
+          (linear): Linear(in_features=1, out_features=1, bias=True)
+        )
+      )
+    )
+    (embedder2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x mtan_time_embedder(
+          (periodic): Linear(in_features=1, out_features=7, bias=True)
+          (linear): Linear(in_features=1, out_features=1, bias=True)
+        )
+      )
+    )
+  )
+  (dec): dec_mtan_rnn(
+    (att): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x multiTimeAttention(
+          (linears): ModuleList(
+            (0-1): 2 x Linear(in_features=8, out_features=8, bias=True)
+            (2): Linear(in_features=6, out_features=6, bias=True)
+          )
+        )
+      )
+    )
+    (gru_rnn): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x GRU(3, 3, batch_first=True, bidirectional=True)
+      )
+    )
+    (z0_to_obs): Sequential(
+      (0): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=6, out_features=3, bias=True)
+        )
+      )
+      (1): ReLU()
+      (2): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=3, out_features=41, bias=True)
+        )
+      )
+    )
+    (embedder1): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x mtan_time_embedder(
+          (periodic): Linear(in_features=1, out_features=7, bias=True)
+          (linear): Linear(in_features=1, out_features=1, bias=True)
+        )
+      )
+    )
+    (embedder2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x mtan_time_embedder(
+          (periodic): Linear(in_features=1, out_features=7, bias=True)
+          (linear): Linear(in_features=1, out_features=1, bias=True)
+        )
+      )
+    )
+  )
+  (classifier): create_classifier(
+    (gru_rnn): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x reverseGru(3, 4, batch_first=True)
+      )
+    )
+    (classifier): Sequential(
+      (0): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=4, out_features=6, bias=True)
+        )
+      )
+      (1): ReLU()
+      (2): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=6, out_features=6, bias=True)
+        )
+      )
+      (3): ReLU()
+      (4): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=6, out_features=2, bias=True)
+        )
+      )
+    )
+  )
+)
+parameters: 1598 1094 388
+fullModel(
+  (rec): enc_mtan_rnn(
+    (att): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x multiTimeAttention(
+          (linears): ModuleList(
+            (0-1): 2 x Linear(in_features=8, out_features=8, bias=True)
+            (2): Linear(in_features=82, out_features=4, bias=True)
+          )
+        )
+      )
+    )
+    (gru_rnn): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x GRU(4, 4, batch_first=True, bidirectional=True)
+      )
+    )
+    (hiddens_to_z0): Sequential(
+      (0): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=8, out_features=3, bias=True)
+        )
+      )
+      (1): ReLU()
+      (2): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=3, out_features=6, bias=True)
+        )
+      )
+    )
+    (embedder1): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x mtan_time_embedder(
+          (periodic): Linear(in_features=1, out_features=7, bias=True)
+          (linear): Linear(in_features=1, out_features=1, bias=True)
+        )
+      )
+    )
+    (embedder2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x mtan_time_embedder(
+          (periodic): Linear(in_features=1, out_features=7, bias=True)
+          (linear): Linear(in_features=1, out_features=1, bias=True)
+        )
+      )
+    )
+  )
+  (dec): dec_mtan_rnn(
+    (att): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x multiTimeAttention(
+          (linears): ModuleList(
+            (0-1): 2 x Linear(in_features=8, out_features=8, bias=True)
+            (2): Linear(in_features=6, out_features=6, bias=True)
+          )
+        )
+      )
+    )
+    (gru_rnn): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x GRU(3, 3, batch_first=True, bidirectional=True)
+      )
+    )
+    (z0_to_obs): Sequential(
+      (0): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=6, out_features=3, bias=True)
+        )
+      )
+      (1): ReLU()
+      (2): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=3, out_features=41, bias=True)
+        )
+      )
+    )
+    (embedder1): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x mtan_time_embedder(
+          (periodic): Linear(in_features=1, out_features=7, bias=True)
+          (linear): Linear(in_features=1, out_features=1, bias=True)
+        )
+      )
+    )
+    (embedder2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x mtan_time_embedder(
+          (periodic): Linear(in_features=1, out_features=7, bias=True)
+          (linear): Linear(in_features=1, out_features=1, bias=True)
+        )
+      )
+    )
+  )
+  (classifier): create_classifier(
+    (gru_rnn): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x reverseGru(3, 4, batch_first=True)
+      )
+    )
+    (classifier): Sequential(
+      (0): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=4, out_features=6, bias=True)
+        )
+      )
+      (1): ReLU()
+      (2): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=6, out_features=6, bias=True)
+        )
+      )
+      (3): ReLU()
+      (4): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=6, out_features=2, bias=True)
+        )
+      )
+    )
+  )
+)
+parameters: 1598 1094 388
+enc_mtan_rnn(
+  (att): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x multiTimeAttention(
+        (linears): ModuleList(
+          (0-1): 2 x Linear(in_features=8, out_features=8, bias=True)
+          (2): Linear(in_features=82, out_features=4, bias=True)
+        )
+      )
+    )
+  )
+  (gru_rnn): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x GRU(4, 4, batch_first=True, bidirectional=True)
+    )
+  )
+  (hiddens_to_z0): Sequential(
+    (0): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=8, out_features=3, bias=True)
+      )
+    )
+    (1): ReLU()
+    (2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=3, out_features=6, bias=True)
+      )
+    )
+  )
+  (embedder1): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x mtan_time_embedder(
+        (periodic): Linear(in_features=1, out_features=7, bias=True)
+        (linear): Linear(in_features=1, out_features=1, bias=True)
+      )
+    )
+  )
+  (embedder2): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x mtan_time_embedder(
+        (periodic): Linear(in_features=1, out_features=7, bias=True)
+        (linear): Linear(in_features=1, out_features=1, bias=True)
+      )
+    )
+  )
+)
+dec_mtan_rnn(
+  (att): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x multiTimeAttention(
+        (linears): ModuleList(
+          (0-1): 2 x Linear(in_features=8, out_features=8, bias=True)
+          (2): Linear(in_features=6, out_features=6, bias=True)
+        )
+      )
+    )
+  )
+  (gru_rnn): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x GRU(3, 3, batch_first=True, bidirectional=True)
+    )
+  )
+  (z0_to_obs): Sequential(
+    (0): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=6, out_features=3, bias=True)
+      )
+    )
+    (1): ReLU()
+    (2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=3, out_features=41, bias=True)
+      )
+    )
+  )
+  (embedder1): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x mtan_time_embedder(
+        (periodic): Linear(in_features=1, out_features=7, bias=True)
+        (linear): Linear(in_features=1, out_features=1, bias=True)
+      )
+    )
+  )
+  (embedder2): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x mtan_time_embedder(
+        (periodic): Linear(in_features=1, out_features=7, bias=True)
+        (linear): Linear(in_features=1, out_features=1, bias=True)
+      )
+    )
+  )
+)
+create_classifier(
+  (gru_rnn): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x reverseGru(3, 4, batch_first=True)
+    )
+  )
+  (classifier): Sequential(
+    (0): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=4, out_features=6, bias=True)
+      )
+    )
+    (1): ReLU()
+    (2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=6, out_features=6, bias=True)
+      )
+    )
+    (3): ReLU()
+    (4): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=6, out_features=2, bias=True)
+      )
+    )
+  )
+)
+Encoder GRU's getting pruned here
+weight_ih_l0 : torch.Size([9, 4])
+weight_hh_l0 : torch.Size([9, 4])
+bias_ih_l0 : torch.Size([9])
+bias_hh_l0 : torch.Size([9])
+weight_ih_l0_reverse : torch.Size([9, 4])
+weight_hh_l0_reverse : torch.Size([9, 4])
+bias_ih_l0_reverse : torch.Size([9])
+bias_hh_l0_reverse : torch.Size([9])
+Decoder GRU's getting pruned here
+weight_ih_l0 : torch.Size([6, 3])
+weight_hh_l0 : torch.Size([6, 3])
+bias_ih_l0 : torch.Size([6])
+bias_hh_l0 : torch.Size([6])
+weight_ih_l0_reverse : torch.Size([6, 3])
+weight_hh_l0_reverse : torch.Size([6, 3])
+bias_ih_l0_reverse : torch.Size([6])
+bias_hh_l0_reverse : torch.Size([6])
+Shape of normal gru is:  12
+We have index size as:  4
+Shape of hidden gru unit:  4
+Index:  3
+Encoder GRU's getting pruned here
+weight_ih_l0 : torch.Size([9, 4])
+weight_hh_l0 : torch.Size([9, 4])
+bias_ih_l0 : torch.Size([9])
+bias_hh_l0 : torch.Size([9])
+weight_ih_l0_reverse : torch.Size([9, 4])
+weight_hh_l0_reverse : torch.Size([9, 4])
+bias_ih_l0_reverse : torch.Size([9])
+bias_hh_l0_reverse : torch.Size([9])
+Decoder GRU's getting pruned here
+weight_ih_l0 : torch.Size([6, 3])
+weight_hh_l0 : torch.Size([6, 3])
+bias_ih_l0 : torch.Size([6])
+bias_hh_l0 : torch.Size([6])
+weight_ih_l0_reverse : torch.Size([6, 3])
+weight_hh_l0_reverse : torch.Size([6, 3])
+bias_ih_l0_reverse : torch.Size([6])
+bias_hh_l0_reverse : torch.Size([6])
+Shape of normal gru is:  12
+We have index size as:  4
+Shape of hidden gru unit:  4
+Index:  3
+=========================================================
+=========================================================
+Pruning iteration is:  0
+Encoder
+enc_mtan_rnn(
+  (att): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x multiTimeAttention(
+        (linears): ModuleList(
+          (0-1): 2 x Linear(in_features=8, out_features=8, bias=True)
+          (2): Linear(in_features=82, out_features=4, bias=True)
+        )
+      )
+    )
+  )
+  (gru_rnn): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x GRU(4, 3, batch_first=True, bidirectional=True)
+    )
+  )
+  (hiddens_to_z0): Sequential(
+    (0): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=6, out_features=2, bias=True)
+      )
+    )
+    (1): ReLU()
+    (2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=2, out_features=6, bias=True)
+      )
+    )
+  )
+  (embedder1): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x mtan_time_embedder(
+        (periodic): Linear(in_features=1, out_features=7, bias=True)
+        (linear): Linear(in_features=1, out_features=1, bias=True)
+      )
+    )
+  )
+  (embedder2): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x mtan_time_embedder(
+        (periodic): Linear(in_features=1, out_features=7, bias=True)
+        (linear): Linear(in_features=1, out_features=1, bias=True)
+      )
+    )
+  )
+)
+Decodder
+dec_mtan_rnn(
+  (att): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x multiTimeAttention(
+        (linears): ModuleList(
+          (0-1): 2 x Linear(in_features=8, out_features=8, bias=True)
+          (2): Linear(in_features=6, out_features=6, bias=True)
+        )
+      )
+    )
+  )
+  (gru_rnn): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x GRU(3, 2, batch_first=True, bidirectional=True)
+    )
+  )
+  (z0_to_obs): Sequential(
+    (0): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=6, out_features=2, bias=True)
+      )
+    )
+    (1): ReLU()
+    (2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=2, out_features=41, bias=True)
+      )
+    )
+  )
+  (embedder1): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x mtan_time_embedder(
+        (periodic): Linear(in_features=1, out_features=7, bias=True)
+        (linear): Linear(in_features=1, out_features=1, bias=True)
+      )
+    )
+  )
+  (embedder2): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x mtan_time_embedder(
+        (periodic): Linear(in_features=1, out_features=7, bias=True)
+        (linear): Linear(in_features=1, out_features=1, bias=True)
+      )
+    )
+  )
+)
+Classifier
+create_classifier(
+  (gru_rnn): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x reverseGru(3, 3, batch_first=True)
+    )
+  )
+  (classifier): Sequential(
+    (0): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=3, out_features=5, bias=True)
+      )
+    )
+    (1): ReLU()
+    (2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=5, out_features=5, bias=True)
+      )
+    )
+    (3): ReLU()
+    (4): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=5, out_features=2, bias=True)
+      )
+    )
+  )
+)
+parameters: 1404 878 268

@@ -1,0 +1,715 @@
+Namespace(alpha=100, batch_size=50, classif=True, classify_pertp=False, dataset='physionet', dec='mtan_rnn', dec_num_heads=1, embed_time=128, enc='mtan_rnn', enc_num_heads=1, fname=None, freq=10.0, gen_hidden=50, justTest=0, k_iwae=1, kl=True, latent_dim=50, learn_emb=True, lr=0.0001, multiplier=0.0625, n=8000, niters=300, nonormalize=False, norm=True, num_ref_points=128, old_split=1, quantization=0.016, rec_hidden=64, save=1, seed=0, split=0, std=0.01) 61994
+The device being used here is:  cuda
+4000
+tensor(362.) tensor(82.) tensor(110.)
+torch.Size([2560, 190, 83]) torch.Size([2560, 1]) torch.Size([640, 163, 83]) torch.Size([640, 1]) torch.Size([800, 203, 83]) torch.Size([800, 1])
+starting main call
+fullModel(
+  (rec): enc_mtan_rnn(
+    (att): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x multiTimeAttention(
+          (linears): ModuleList(
+            (0-1): 2 x Linear(in_features=8, out_features=8, bias=True)
+            (2): Linear(in_features=82, out_features=4, bias=True)
+          )
+        )
+      )
+    )
+    (gru_rnn): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x GRU(4, 4, batch_first=True, bidirectional=True)
+      )
+    )
+    (hiddens_to_z0): Sequential(
+      (0): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=8, out_features=3, bias=True)
+        )
+      )
+      (1): ReLU()
+      (2): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=3, out_features=6, bias=True)
+        )
+      )
+    )
+    (embedder1): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x mtan_time_embedder(
+          (periodic): Linear(in_features=1, out_features=7, bias=True)
+          (linear): Linear(in_features=1, out_features=1, bias=True)
+        )
+      )
+    )
+    (embedder2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x mtan_time_embedder(
+          (periodic): Linear(in_features=1, out_features=7, bias=True)
+          (linear): Linear(in_features=1, out_features=1, bias=True)
+        )
+      )
+    )
+  )
+  (dec): dec_mtan_rnn(
+    (att): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x multiTimeAttention(
+          (linears): ModuleList(
+            (0-1): 2 x Linear(in_features=8, out_features=8, bias=True)
+            (2): Linear(in_features=6, out_features=6, bias=True)
+          )
+        )
+      )
+    )
+    (gru_rnn): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x GRU(3, 3, batch_first=True, bidirectional=True)
+      )
+    )
+    (z0_to_obs): Sequential(
+      (0): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=6, out_features=3, bias=True)
+        )
+      )
+      (1): ReLU()
+      (2): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=3, out_features=41, bias=True)
+        )
+      )
+    )
+    (embedder1): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x mtan_time_embedder(
+          (periodic): Linear(in_features=1, out_features=7, bias=True)
+          (linear): Linear(in_features=1, out_features=1, bias=True)
+        )
+      )
+    )
+    (embedder2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x mtan_time_embedder(
+          (periodic): Linear(in_features=1, out_features=7, bias=True)
+          (linear): Linear(in_features=1, out_features=1, bias=True)
+        )
+      )
+    )
+  )
+  (classifier): create_classifier(
+    (gru_rnn): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x reverseGru(3, 4, batch_first=True)
+      )
+    )
+    (classifier): Sequential(
+      (0): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=4, out_features=6, bias=True)
+        )
+      )
+      (1): ReLU()
+      (2): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=6, out_features=6, bias=True)
+        )
+      )
+      (3): ReLU()
+      (4): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=6, out_features=2, bias=True)
+        )
+      )
+    )
+  )
+)
+parameters: 1598 1094 388
+fullModel(
+  (rec): enc_mtan_rnn(
+    (att): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x multiTimeAttention(
+          (linears): ModuleList(
+            (0-1): 2 x Linear(in_features=8, out_features=8, bias=True)
+            (2): Linear(in_features=82, out_features=4, bias=True)
+          )
+        )
+      )
+    )
+    (gru_rnn): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x GRU(4, 4, batch_first=True, bidirectional=True)
+      )
+    )
+    (hiddens_to_z0): Sequential(
+      (0): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=8, out_features=3, bias=True)
+        )
+      )
+      (1): ReLU()
+      (2): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=3, out_features=6, bias=True)
+        )
+      )
+    )
+    (embedder1): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x mtan_time_embedder(
+          (periodic): Linear(in_features=1, out_features=7, bias=True)
+          (linear): Linear(in_features=1, out_features=1, bias=True)
+        )
+      )
+    )
+    (embedder2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x mtan_time_embedder(
+          (periodic): Linear(in_features=1, out_features=7, bias=True)
+          (linear): Linear(in_features=1, out_features=1, bias=True)
+        )
+      )
+    )
+  )
+  (dec): dec_mtan_rnn(
+    (att): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x multiTimeAttention(
+          (linears): ModuleList(
+            (0-1): 2 x Linear(in_features=8, out_features=8, bias=True)
+            (2): Linear(in_features=6, out_features=6, bias=True)
+          )
+        )
+      )
+    )
+    (gru_rnn): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x GRU(3, 3, batch_first=True, bidirectional=True)
+      )
+    )
+    (z0_to_obs): Sequential(
+      (0): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=6, out_features=3, bias=True)
+        )
+      )
+      (1): ReLU()
+      (2): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=3, out_features=41, bias=True)
+        )
+      )
+    )
+    (embedder1): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x mtan_time_embedder(
+          (periodic): Linear(in_features=1, out_features=7, bias=True)
+          (linear): Linear(in_features=1, out_features=1, bias=True)
+        )
+      )
+    )
+    (embedder2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x mtan_time_embedder(
+          (periodic): Linear(in_features=1, out_features=7, bias=True)
+          (linear): Linear(in_features=1, out_features=1, bias=True)
+        )
+      )
+    )
+  )
+  (classifier): create_classifier(
+    (gru_rnn): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x reverseGru(3, 4, batch_first=True)
+      )
+    )
+    (classifier): Sequential(
+      (0): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=4, out_features=6, bias=True)
+        )
+      )
+      (1): ReLU()
+      (2): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=6, out_features=6, bias=True)
+        )
+      )
+      (3): ReLU()
+      (4): PAIModulePyThread(
+        (layerArray): ModuleList(
+          (0-1): 2 x Linear(in_features=6, out_features=2, bias=True)
+        )
+      )
+    )
+  )
+)
+parameters: 1598 1094 388
+enc_mtan_rnn(
+  (att): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x multiTimeAttention(
+        (linears): ModuleList(
+          (0-1): 2 x Linear(in_features=8, out_features=8, bias=True)
+          (2): Linear(in_features=82, out_features=4, bias=True)
+        )
+      )
+    )
+  )
+  (gru_rnn): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x GRU(4, 4, batch_first=True, bidirectional=True)
+    )
+  )
+  (hiddens_to_z0): Sequential(
+    (0): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=8, out_features=3, bias=True)
+      )
+    )
+    (1): ReLU()
+    (2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=3, out_features=6, bias=True)
+      )
+    )
+  )
+  (embedder1): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x mtan_time_embedder(
+        (periodic): Linear(in_features=1, out_features=7, bias=True)
+        (linear): Linear(in_features=1, out_features=1, bias=True)
+      )
+    )
+  )
+  (embedder2): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x mtan_time_embedder(
+        (periodic): Linear(in_features=1, out_features=7, bias=True)
+        (linear): Linear(in_features=1, out_features=1, bias=True)
+      )
+    )
+  )
+)
+dec_mtan_rnn(
+  (att): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x multiTimeAttention(
+        (linears): ModuleList(
+          (0-1): 2 x Linear(in_features=8, out_features=8, bias=True)
+          (2): Linear(in_features=6, out_features=6, bias=True)
+        )
+      )
+    )
+  )
+  (gru_rnn): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x GRU(3, 3, batch_first=True, bidirectional=True)
+    )
+  )
+  (z0_to_obs): Sequential(
+    (0): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=6, out_features=3, bias=True)
+      )
+    )
+    (1): ReLU()
+    (2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=3, out_features=41, bias=True)
+      )
+    )
+  )
+  (embedder1): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x mtan_time_embedder(
+        (periodic): Linear(in_features=1, out_features=7, bias=True)
+        (linear): Linear(in_features=1, out_features=1, bias=True)
+      )
+    )
+  )
+  (embedder2): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x mtan_time_embedder(
+        (periodic): Linear(in_features=1, out_features=7, bias=True)
+        (linear): Linear(in_features=1, out_features=1, bias=True)
+      )
+    )
+  )
+)
+create_classifier(
+  (gru_rnn): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x reverseGru(3, 4, batch_first=True)
+    )
+  )
+  (classifier): Sequential(
+    (0): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=4, out_features=6, bias=True)
+      )
+    )
+    (1): ReLU()
+    (2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=6, out_features=6, bias=True)
+      )
+    )
+    (3): ReLU()
+    (4): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=6, out_features=2, bias=True)
+      )
+    )
+  )
+)
+Encoder GRU's getting pruned here
+weight_ih_l0 : torch.Size([9, 4])
+weight_hh_l0 : torch.Size([9, 4])
+bias_ih_l0 : torch.Size([9])
+bias_hh_l0 : torch.Size([9])
+weight_ih_l0_reverse : torch.Size([9, 4])
+weight_hh_l0_reverse : torch.Size([9, 4])
+bias_ih_l0_reverse : torch.Size([9])
+bias_hh_l0_reverse : torch.Size([9])
+Decoder GRU's getting pruned here
+weight_ih_l0 : torch.Size([6, 3])
+weight_hh_l0 : torch.Size([6, 3])
+bias_ih_l0 : torch.Size([6])
+bias_hh_l0 : torch.Size([6])
+weight_ih_l0_reverse : torch.Size([6, 3])
+weight_hh_l0_reverse : torch.Size([6, 3])
+bias_ih_l0_reverse : torch.Size([6])
+bias_hh_l0_reverse : torch.Size([6])
+Shape of normal gru is:  12
+We have index size as:  4
+Shape of hidden gru unit:  4
+Index:  3
+Encoder GRU's getting pruned here
+weight_ih_l0 : torch.Size([9, 4])
+weight_hh_l0 : torch.Size([9, 4])
+bias_ih_l0 : torch.Size([9])
+bias_hh_l0 : torch.Size([9])
+weight_ih_l0_reverse : torch.Size([9, 4])
+weight_hh_l0_reverse : torch.Size([9, 4])
+bias_ih_l0_reverse : torch.Size([9])
+bias_hh_l0_reverse : torch.Size([9])
+Decoder GRU's getting pruned here
+weight_ih_l0 : torch.Size([6, 3])
+weight_hh_l0 : torch.Size([6, 3])
+bias_ih_l0 : torch.Size([6])
+bias_hh_l0 : torch.Size([6])
+weight_ih_l0_reverse : torch.Size([6, 3])
+weight_hh_l0_reverse : torch.Size([6, 3])
+bias_ih_l0_reverse : torch.Size([6])
+bias_hh_l0_reverse : torch.Size([6])
+Shape of normal gru is:  12
+We have index size as:  4
+Shape of hidden gru unit:  4
+Index:  3
+=========================================================
+=========================================================
+Pruning iteration is:  0
+Encoder
+enc_mtan_rnn(
+  (att): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x multiTimeAttention(
+        (linears): ModuleList(
+          (0-1): 2 x Linear(in_features=8, out_features=8, bias=True)
+          (2): Linear(in_features=82, out_features=4, bias=True)
+        )
+      )
+    )
+  )
+  (gru_rnn): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x GRU(4, 3, batch_first=True, bidirectional=True)
+    )
+  )
+  (hiddens_to_z0): Sequential(
+    (0): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=6, out_features=2, bias=True)
+      )
+    )
+    (1): ReLU()
+    (2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=2, out_features=6, bias=True)
+      )
+    )
+  )
+  (embedder1): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x mtan_time_embedder(
+        (periodic): Linear(in_features=1, out_features=7, bias=True)
+        (linear): Linear(in_features=1, out_features=1, bias=True)
+      )
+    )
+  )
+  (embedder2): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x mtan_time_embedder(
+        (periodic): Linear(in_features=1, out_features=7, bias=True)
+        (linear): Linear(in_features=1, out_features=1, bias=True)
+      )
+    )
+  )
+)
+Decodder
+dec_mtan_rnn(
+  (att): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x multiTimeAttention(
+        (linears): ModuleList(
+          (0-1): 2 x Linear(in_features=8, out_features=8, bias=True)
+          (2): Linear(in_features=6, out_features=6, bias=True)
+        )
+      )
+    )
+  )
+  (gru_rnn): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x GRU(3, 2, batch_first=True, bidirectional=True)
+    )
+  )
+  (z0_to_obs): Sequential(
+    (0): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=6, out_features=2, bias=True)
+      )
+    )
+    (1): ReLU()
+    (2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=2, out_features=41, bias=True)
+      )
+    )
+  )
+  (embedder1): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x mtan_time_embedder(
+        (periodic): Linear(in_features=1, out_features=7, bias=True)
+        (linear): Linear(in_features=1, out_features=1, bias=True)
+      )
+    )
+  )
+  (embedder2): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x mtan_time_embedder(
+        (periodic): Linear(in_features=1, out_features=7, bias=True)
+        (linear): Linear(in_features=1, out_features=1, bias=True)
+      )
+    )
+  )
+)
+Classifier
+create_classifier(
+  (gru_rnn): PAIModulePyThread(
+    (layerArray): ModuleList(
+      (0-1): 2 x reverseGru(3, 3, batch_first=True)
+    )
+  )
+  (classifier): Sequential(
+    (0): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=3, out_features=5, bias=True)
+      )
+    )
+    (1): ReLU()
+    (2): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=5, out_features=5, bias=True)
+      )
+    )
+    (3): ReLU()
+    (4): PAIModulePyThread(
+      (layerArray): ModuleList(
+        (0-1): 2 x Linear(in_features=5, out_features=2, bias=True)
+      )
+    )
+  )
+)
+parameters: 1404 878 268
+Pruning Iter: 1, Iter: 1, recon_loss: 701.7325, ce_loss: 0.4945, acc: 0.8586, mse: 0.1402, val_loss: 0.4776, val_acc: 0.8719, val_auc: 0.4316, test_acc: 0.8625, test_auc: 0.4113
+Pruning Iter: 1, Iter: 2, recon_loss: 665.5297, ce_loss: 0.4824, acc: 0.8586, mse: 0.1327, val_loss: 0.4631, val_acc: 0.8719, val_auc: 0.5527, test_acc: 0.8625, test_auc: 0.4792
+Pruning Iter: 1, Iter: 3, recon_loss: 643.2621, ce_loss: 0.4696, acc: 0.8586, mse: 0.1281, val_loss: 0.4500, val_acc: 0.8719, val_auc: 0.5781, test_acc: 0.8625, test_auc: 0.5127
+Pruning Iter: 1, Iter: 4, recon_loss: 625.9786, ce_loss: 0.4579, acc: 0.8586, mse: 0.1246, val_loss: 0.4389, val_acc: 0.8719, val_auc: 0.5546, test_acc: 0.8625, test_auc: 0.5402
+Pruning Iter: 1, Iter: 5, recon_loss: 610.6684, ce_loss: 0.4482, acc: 0.8586, mse: 0.1215, val_loss: 0.4290, val_acc: 0.8719, val_auc: 0.5612, test_acc: 0.8625, test_auc: 0.4825
+Pruning Iter: 1, Iter: 6, recon_loss: 596.5142, ce_loss: 0.4397, acc: 0.8586, mse: 0.1187, val_loss: 0.4210, val_acc: 0.8719, val_auc: 0.5749, test_acc: 0.8625, test_auc: 0.5223
+Pruning Iter: 1, Iter: 7, recon_loss: 582.6441, ce_loss: 0.4332, acc: 0.8586, mse: 0.1159, val_loss: 0.4142, val_acc: 0.8719, val_auc: 0.6024, test_acc: 0.8625, test_auc: 0.4882
+Pruning Iter: 1, Iter: 8, recon_loss: 569.1874, ce_loss: 0.4281, acc: 0.8586, mse: 0.1132, val_loss: 0.4082, val_acc: 0.8719, val_auc: 0.6156, test_acc: 0.8625, test_auc: 0.5748
+Pruning Iter: 1, Iter: 9, recon_loss: 556.0396, ce_loss: 0.4237, acc: 0.8586, mse: 0.1105, val_loss: 0.4035, val_acc: 0.8719, val_auc: 0.6395, test_acc: 0.8625, test_auc: 0.5786
+Pruning Iter: 1, Iter: 10, recon_loss: 543.1425, ce_loss: 0.4203, acc: 0.8586, mse: 0.1079, val_loss: 0.4001, val_acc: 0.8719, val_auc: 0.5927, test_acc: 0.8625, test_auc: 0.5501
+Pruning Iter: 1, Iter: 11, recon_loss: 530.4494, ce_loss: 0.4170, acc: 0.8586, mse: 0.1054, val_loss: 0.3971, val_acc: 0.8719, val_auc: 0.5901, test_acc: 0.8625, test_auc: 0.5788
+Pruning Iter: 1, Iter: 12, recon_loss: 518.0476, ce_loss: 0.4150, acc: 0.8586, mse: 0.1029, val_loss: 0.3938, val_acc: 0.8719, val_auc: 0.6404, test_acc: 0.8625, test_auc: 0.5955
+Pruning Iter: 1, Iter: 13, recon_loss: 505.8303, ce_loss: 0.4124, acc: 0.8586, mse: 0.1004, val_loss: 0.3919, val_acc: 0.8719, val_auc: 0.6279, test_acc: 0.8625, test_auc: 0.5399
+Pruning Iter: 1, Iter: 14, recon_loss: 493.8752, ce_loss: 0.4107, acc: 0.8586, mse: 0.0980, val_loss: 0.3887, val_acc: 0.8719, val_auc: 0.6671, test_acc: 0.8625, test_auc: 0.5948
+Pruning Iter: 1, Iter: 15, recon_loss: 482.1605, ce_loss: 0.4096, acc: 0.8586, mse: 0.0956, val_loss: 0.3876, val_acc: 0.8719, val_auc: 0.6364, test_acc: 0.8625, test_auc: 0.6118
+Pruning Iter: 1, Iter: 16, recon_loss: 470.5812, ce_loss: 0.4080, acc: 0.8586, mse: 0.0933, val_loss: 0.3860, val_acc: 0.8719, val_auc: 0.6322, test_acc: 0.8625, test_auc: 0.5885
+Pruning Iter: 1, Iter: 17, recon_loss: 459.1962, ce_loss: 0.4067, acc: 0.8586, mse: 0.0910, val_loss: 0.3837, val_acc: 0.8719, val_auc: 0.7095, test_acc: 0.8625, test_auc: 0.6002
+Pruning Iter: 1, Iter: 18, recon_loss: 447.9741, ce_loss: 0.4056, acc: 0.8586, mse: 0.0887, val_loss: 0.3838, val_acc: 0.8719, val_auc: 0.6475, test_acc: 0.8625, test_auc: 0.6284
+Pruning Iter: 1, Iter: 19, recon_loss: 436.9552, ce_loss: 0.4055, acc: 0.8586, mse: 0.0865, val_loss: 0.3833, val_acc: 0.8719, val_auc: 0.6558, test_acc: 0.8625, test_auc: 0.6503
+Pruning Iter: 1, Iter: 20, recon_loss: 426.2613, ce_loss: 0.4047, acc: 0.8586, mse: 0.0843, val_loss: 0.3813, val_acc: 0.8719, val_auc: 0.6967, test_acc: 0.8625, test_auc: 0.6270
+Pruning Iter: 1, Iter: 21, recon_loss: 415.6652, ce_loss: 0.4040, acc: 0.8586, mse: 0.0821, val_loss: 0.3819, val_acc: 0.8719, val_auc: 0.6725, test_acc: 0.8625, test_auc: 0.6680
+Pruning Iter: 1, Iter: 22, recon_loss: 405.1872, ce_loss: 0.4032, acc: 0.8586, mse: 0.0800, val_loss: 0.3805, val_acc: 0.8719, val_auc: 0.6946, test_acc: 0.8625, test_auc: 0.7166
+Pruning Iter: 1, Iter: 23, recon_loss: 394.9175, ce_loss: 0.4030, acc: 0.8586, mse: 0.0779, val_loss: 0.3795, val_acc: 0.8719, val_auc: 0.6938, test_acc: 0.8625, test_auc: 0.6476
+Pruning Iter: 1, Iter: 24, recon_loss: 384.9107, ce_loss: 0.4018, acc: 0.8586, mse: 0.0759, val_loss: 0.3792, val_acc: 0.8719, val_auc: 0.6881, test_acc: 0.8625, test_auc: 0.6832
+Pruning Iter: 1, Iter: 25, recon_loss: 375.0712, ce_loss: 0.4015, acc: 0.8586, mse: 0.0739, val_loss: 0.3772, val_acc: 0.8719, val_auc: 0.7352, test_acc: 0.8625, test_auc: 0.6545
+Pruning Iter: 1, Iter: 26, recon_loss: 365.3478, ce_loss: 0.3997, acc: 0.8586, mse: 0.0719, val_loss: 0.3766, val_acc: 0.8719, val_auc: 0.7279, test_acc: 0.8625, test_auc: 0.6670
+Pruning Iter: 1, Iter: 27, recon_loss: 355.8540, ce_loss: 0.3996, acc: 0.8586, mse: 0.0700, val_loss: 0.3751, val_acc: 0.8719, val_auc: 0.7580, test_acc: 0.8625, test_auc: 0.6777
+Pruning Iter: 1, Iter: 28, recon_loss: 346.5393, ce_loss: 0.3990, acc: 0.8586, mse: 0.0681, val_loss: 0.3756, val_acc: 0.8719, val_auc: 0.7144, test_acc: 0.8625, test_auc: 0.6861
+Pruning Iter: 1, Iter: 29, recon_loss: 337.3945, ce_loss: 0.3976, acc: 0.8586, mse: 0.0663, val_loss: 0.3718, val_acc: 0.8719, val_auc: 0.7703, test_acc: 0.8625, test_auc: 0.6986
+Pruning Iter: 1, Iter: 30, recon_loss: 328.4877, ce_loss: 0.3960, acc: 0.8586, mse: 0.0645, val_loss: 0.3715, val_acc: 0.8719, val_auc: 0.7602, test_acc: 0.8625, test_auc: 0.6868
+Pruning Iter: 1, Iter: 31, recon_loss: 319.6721, ce_loss: 0.3942, acc: 0.8586, mse: 0.0627, val_loss: 0.3718, val_acc: 0.8719, val_auc: 0.7385, test_acc: 0.8625, test_auc: 0.6958
+Pruning Iter: 1, Iter: 32, recon_loss: 311.1826, ce_loss: 0.3929, acc: 0.8586, mse: 0.0609, val_loss: 0.3675, val_acc: 0.8719, val_auc: 0.7585, test_acc: 0.8625, test_auc: 0.7024
+Pruning Iter: 1, Iter: 33, recon_loss: 302.7738, ce_loss: 0.3901, acc: 0.8586, mse: 0.0592, val_loss: 0.3645, val_acc: 0.8719, val_auc: 0.7769, test_acc: 0.8625, test_auc: 0.7047
+Pruning Iter: 1, Iter: 34, recon_loss: 294.6500, ce_loss: 0.3878, acc: 0.8586, mse: 0.0576, val_loss: 0.3610, val_acc: 0.8719, val_auc: 0.7780, test_acc: 0.8625, test_auc: 0.7236
+Pruning Iter: 1, Iter: 35, recon_loss: 286.6155, ce_loss: 0.3843, acc: 0.8586, mse: 0.0560, val_loss: 0.3590, val_acc: 0.8719, val_auc: 0.7753, test_acc: 0.8625, test_auc: 0.7354
+Pruning Iter: 1, Iter: 36, recon_loss: 278.8283, ce_loss: 0.3824, acc: 0.8586, mse: 0.0544, val_loss: 0.3568, val_acc: 0.8719, val_auc: 0.7714, test_acc: 0.8625, test_auc: 0.7371
+Pruning Iter: 1, Iter: 37, recon_loss: 271.3782, ce_loss: 0.3787, acc: 0.8586, mse: 0.0529, val_loss: 0.3522, val_acc: 0.8719, val_auc: 0.7969, test_acc: 0.8625, test_auc: 0.7540
+Pruning Iter: 1, Iter: 38, recon_loss: 264.0267, ce_loss: 0.3759, acc: 0.8586, mse: 0.0514, val_loss: 0.3511, val_acc: 0.8719, val_auc: 0.7736, test_acc: 0.8625, test_auc: 0.7452
+Pruning Iter: 1, Iter: 39, recon_loss: 256.7954, ce_loss: 0.3737, acc: 0.8586, mse: 0.0499, val_loss: 0.3462, val_acc: 0.8719, val_auc: 0.8057, test_acc: 0.8625, test_auc: 0.7559
+Pruning Iter: 1, Iter: 40, recon_loss: 249.8631, ce_loss: 0.3704, acc: 0.8586, mse: 0.0486, val_loss: 0.3442, val_acc: 0.8719, val_auc: 0.8044, test_acc: 0.8625, test_auc: 0.7665
+Pruning Iter: 1, Iter: 41, recon_loss: 243.1273, ce_loss: 0.3664, acc: 0.8586, mse: 0.0472, val_loss: 0.3421, val_acc: 0.8719, val_auc: 0.7907, test_acc: 0.8625, test_auc: 0.7634
+Pruning Iter: 1, Iter: 42, recon_loss: 236.5666, ce_loss: 0.3653, acc: 0.8586, mse: 0.0459, val_loss: 0.3385, val_acc: 0.8719, val_auc: 0.8125, test_acc: 0.8625, test_auc: 0.7712
+Pruning Iter: 1, Iter: 43, recon_loss: 230.2093, ce_loss: 0.3625, acc: 0.8586, mse: 0.0446, val_loss: 0.3328, val_acc: 0.8719, val_auc: 0.8236, test_acc: 0.8625, test_auc: 0.7818
+Pruning Iter: 1, Iter: 44, recon_loss: 224.0474, ce_loss: 0.3581, acc: 0.8586, mse: 0.0434, val_loss: 0.3331, val_acc: 0.8719, val_auc: 0.8140, test_acc: 0.8625, test_auc: 0.7750
+Pruning Iter: 1, Iter: 45, recon_loss: 218.0726, ce_loss: 0.3579, acc: 0.8586, mse: 0.0422, val_loss: 0.3296, val_acc: 0.8719, val_auc: 0.8190, test_acc: 0.8625, test_auc: 0.7827
+Pruning Iter: 1, Iter: 46, recon_loss: 212.2983, ce_loss: 0.3545, acc: 0.8586, mse: 0.0410, val_loss: 0.3293, val_acc: 0.8719, val_auc: 0.8146, test_acc: 0.8625, test_auc: 0.7919
+Pruning Iter: 1, Iter: 47, recon_loss: 206.7439, ce_loss: 0.3520, acc: 0.8586, mse: 0.0399, val_loss: 0.3241, val_acc: 0.8719, val_auc: 0.8274, test_acc: 0.8625, test_auc: 0.7942
+Pruning Iter: 1, Iter: 48, recon_loss: 201.3340, ce_loss: 0.3513, acc: 0.8586, mse: 0.0388, val_loss: 0.3243, val_acc: 0.8719, val_auc: 0.8220, test_acc: 0.8625, test_auc: 0.7937
+Pruning Iter: 1, Iter: 49, recon_loss: 196.0882, ce_loss: 0.3493, acc: 0.8586, mse: 0.0378, val_loss: 0.3215, val_acc: 0.8719, val_auc: 0.8226, test_acc: 0.8625, test_auc: 0.7857
+Pruning Iter: 1, Iter: 50, recon_loss: 191.0715, ce_loss: 0.3468, acc: 0.8586, mse: 0.0368, val_loss: 0.3143, val_acc: 0.8719, val_auc: 0.8367, test_acc: 0.8625, test_auc: 0.7958
+Pruning Iter: 1, Iter: 51, recon_loss: 186.1988, ce_loss: 0.3436, acc: 0.8586, mse: 0.0358, val_loss: 0.3142, val_acc: 0.8719, val_auc: 0.8364, test_acc: 0.8625, test_auc: 0.7979
+Pruning Iter: 1, Iter: 52, recon_loss: 181.5479, ce_loss: 0.3427, acc: 0.8586, mse: 0.0349, val_loss: 0.3171, val_acc: 0.8719, val_auc: 0.8268, test_acc: 0.8625, test_auc: 0.7989
+Pruning Iter: 1, Iter: 53, recon_loss: 176.9102, ce_loss: 0.3397, acc: 0.8586, mse: 0.0340, val_loss: 0.3166, val_acc: 0.8719, val_auc: 0.8242, test_acc: 0.8625, test_auc: 0.7969
+Pruning Iter: 1, Iter: 54, recon_loss: 172.6029, ce_loss: 0.3388, acc: 0.8586, mse: 0.0331, val_loss: 0.3117, val_acc: 0.8719, val_auc: 0.8328, test_acc: 0.8625, test_auc: 0.7985
+Pruning Iter: 1, Iter: 55, recon_loss: 168.2866, ce_loss: 0.3384, acc: 0.8586, mse: 0.0322, val_loss: 0.3124, val_acc: 0.8719, val_auc: 0.8264, test_acc: 0.8625, test_auc: 0.7946
+Pruning Iter: 1, Iter: 56, recon_loss: 164.2158, ce_loss: 0.3371, acc: 0.8586, mse: 0.0314, val_loss: 0.3114, val_acc: 0.8719, val_auc: 0.8216, test_acc: 0.8625, test_auc: 0.8040
+Pruning Iter: 1, Iter: 57, recon_loss: 160.2719, ce_loss: 0.3343, acc: 0.8586, mse: 0.0307, val_loss: 0.3099, val_acc: 0.8719, val_auc: 0.8288, test_acc: 0.8625, test_auc: 0.7990
+Pruning Iter: 1, Iter: 58, recon_loss: 156.4351, ce_loss: 0.3318, acc: 0.8586, mse: 0.0299, val_loss: 0.3114, val_acc: 0.8719, val_auc: 0.8214, test_acc: 0.8625, test_auc: 0.8099
+Pruning Iter: 1, Iter: 59, recon_loss: 152.7523, ce_loss: 0.3292, acc: 0.8586, mse: 0.0292, val_loss: 0.3069, val_acc: 0.8719, val_auc: 0.8322, test_acc: 0.8625, test_auc: 0.8049
+Pruning Iter: 1, Iter: 60, recon_loss: 149.1683, ce_loss: 0.3299, acc: 0.8586, mse: 0.0285, val_loss: 0.3073, val_acc: 0.8719, val_auc: 0.8260, test_acc: 0.8625, test_auc: 0.8158
+Pruning Iter: 1, Iter: 61, recon_loss: 145.7227, ce_loss: 0.3284, acc: 0.8586, mse: 0.0278, val_loss: 0.3057, val_acc: 0.8719, val_auc: 0.8341, test_acc: 0.8625, test_auc: 0.8158
+Pruning Iter: 1, Iter: 62, recon_loss: 142.4046, ce_loss: 0.3269, acc: 0.8586, mse: 0.0272, val_loss: 0.3049, val_acc: 0.8719, val_auc: 0.8265, test_acc: 0.8625, test_auc: 0.8147
+Pruning Iter: 1, Iter: 63, recon_loss: 139.1784, ce_loss: 0.3247, acc: 0.8590, mse: 0.0266, val_loss: 0.3020, val_acc: 0.8734, val_auc: 0.8303, test_acc: 0.8625, test_auc: 0.8156
+Pruning Iter: 1, Iter: 64, recon_loss: 136.0255, ce_loss: 0.3274, acc: 0.8590, mse: 0.0260, val_loss: 0.3020, val_acc: 0.8719, val_auc: 0.8312, test_acc: 0.8625, test_auc: 0.8251
+Pruning Iter: 1, Iter: 65, recon_loss: 133.0361, ce_loss: 0.3236, acc: 0.8594, mse: 0.0254, val_loss: 0.3000, val_acc: 0.8719, val_auc: 0.8394, test_acc: 0.8625, test_auc: 0.8215
+Pruning Iter: 1, Iter: 66, recon_loss: 130.1193, ce_loss: 0.3241, acc: 0.8602, mse: 0.0248, val_loss: 0.2970, val_acc: 0.8719, val_auc: 0.8383, test_acc: 0.8612, test_auc: 0.8171
+Pruning Iter: 1, Iter: 67, recon_loss: 127.3047, ce_loss: 0.3226, acc: 0.8617, mse: 0.0243, val_loss: 0.2992, val_acc: 0.8734, val_auc: 0.8367, test_acc: 0.8638, test_auc: 0.8124
+Pruning Iter: 1, Iter: 68, recon_loss: 124.5272, ce_loss: 0.3229, acc: 0.8652, mse: 0.0237, val_loss: 0.2979, val_acc: 0.8750, val_auc: 0.8361, test_acc: 0.8662, test_auc: 0.8180
+Pruning Iter: 1, Iter: 69, recon_loss: 121.8320, ce_loss: 0.3203, acc: 0.8688, mse: 0.0232, val_loss: 0.3006, val_acc: 0.8797, val_auc: 0.8337, test_acc: 0.8662, test_auc: 0.8219
+Pruning Iter: 1, Iter: 70, recon_loss: 119.2882, ce_loss: 0.3175, acc: 0.8676, mse: 0.0228, val_loss: 0.2980, val_acc: 0.8812, val_auc: 0.8294, test_acc: 0.8650, test_auc: 0.8192
+Pruning Iter: 1, Iter: 71, recon_loss: 116.7439, ce_loss: 0.3197, acc: 0.8727, mse: 0.0223, val_loss: 0.2961, val_acc: 0.8875, val_auc: 0.8440, test_acc: 0.8738, test_auc: 0.8253
+Pruning Iter: 1, Iter: 72, recon_loss: 114.3485, ce_loss: 0.3204, acc: 0.8711, mse: 0.0218, val_loss: 0.2989, val_acc: 0.8828, val_auc: 0.8230, test_acc: 0.8712, test_auc: 0.8242
+Pruning Iter: 1, Iter: 73, recon_loss: 111.9999, ce_loss: 0.3161, acc: 0.8695, mse: 0.0214, val_loss: 0.3001, val_acc: 0.8875, val_auc: 0.8273, test_acc: 0.8700, test_auc: 0.8156
+Pruning Iter: 1, Iter: 74, recon_loss: 109.6754, ce_loss: 0.3160, acc: 0.8734, mse: 0.0209, val_loss: 0.2942, val_acc: 0.8766, val_auc: 0.8392, test_acc: 0.8725, test_auc: 0.8214
+Pruning Iter: 1, Iter: 75, recon_loss: 107.4791, ce_loss: 0.3173, acc: 0.8738, mse: 0.0205, val_loss: 0.2946, val_acc: 0.8781, val_auc: 0.8420, test_acc: 0.8738, test_auc: 0.8267
+Pruning Iter: 1, Iter: 76, recon_loss: 105.2768, ce_loss: 0.3168, acc: 0.8754, mse: 0.0201, val_loss: 0.2959, val_acc: 0.8828, val_auc: 0.8416, test_acc: 0.8762, test_auc: 0.8323
+Pruning Iter: 1, Iter: 77, recon_loss: 103.1531, ce_loss: 0.3146, acc: 0.8770, mse: 0.0197, val_loss: 0.2929, val_acc: 0.8891, val_auc: 0.8387, test_acc: 0.8762, test_auc: 0.8271
+Pruning Iter: 1, Iter: 78, recon_loss: 101.0691, ce_loss: 0.3146, acc: 0.8773, mse: 0.0193, val_loss: 0.2920, val_acc: 0.8844, val_auc: 0.8352, test_acc: 0.8750, test_auc: 0.8233
+Pruning Iter: 1, Iter: 79, recon_loss: 99.0378, ce_loss: 0.3125, acc: 0.8727, mse: 0.0190, val_loss: 0.2929, val_acc: 0.8844, val_auc: 0.8377, test_acc: 0.8788, test_auc: 0.8290
+Pruning Iter: 1, Iter: 80, recon_loss: 97.1051, ce_loss: 0.3132, acc: 0.8738, mse: 0.0186, val_loss: 0.2995, val_acc: 0.8828, val_auc: 0.8252, test_acc: 0.8800, test_auc: 0.8263
+Pruning Iter: 1, Iter: 81, recon_loss: 95.1796, ce_loss: 0.3121, acc: 0.8754, mse: 0.0182, val_loss: 0.2945, val_acc: 0.8859, val_auc: 0.8320, test_acc: 0.8762, test_auc: 0.8288
+Pruning Iter: 1, Iter: 82, recon_loss: 93.2709, ce_loss: 0.3131, acc: 0.8762, mse: 0.0179, val_loss: 0.2962, val_acc: 0.8859, val_auc: 0.8320, test_acc: 0.8762, test_auc: 0.8311
+Pruning Iter: 1, Iter: 83, recon_loss: 91.4456, ce_loss: 0.3092, acc: 0.8773, mse: 0.0176, val_loss: 0.2906, val_acc: 0.8875, val_auc: 0.8370, test_acc: 0.8788, test_auc: 0.8241
+Pruning Iter: 1, Iter: 84, recon_loss: 89.6172, ce_loss: 0.3115, acc: 0.8789, mse: 0.0172, val_loss: 0.2943, val_acc: 0.8906, val_auc: 0.8330, test_acc: 0.8850, test_auc: 0.8310
+Pruning Iter: 1, Iter: 85, recon_loss: 87.8809, ce_loss: 0.3108, acc: 0.8758, mse: 0.0169, val_loss: 0.2892, val_acc: 0.8922, val_auc: 0.8430, test_acc: 0.8825, test_auc: 0.8262
+Pruning Iter: 1, Iter: 86, recon_loss: 86.1199, ce_loss: 0.3094, acc: 0.8777, mse: 0.0166, val_loss: 0.2889, val_acc: 0.8859, val_auc: 0.8449, test_acc: 0.8762, test_auc: 0.8354
+Pruning Iter: 1, Iter: 87, recon_loss: 84.3692, ce_loss: 0.3101, acc: 0.8789, mse: 0.0163, val_loss: 0.2947, val_acc: 0.8891, val_auc: 0.8369, test_acc: 0.8788, test_auc: 0.8329
+Pruning Iter: 1, Iter: 88, recon_loss: 82.5954, ce_loss: 0.3078, acc: 0.8766, mse: 0.0159, val_loss: 0.2916, val_acc: 0.8812, val_auc: 0.8350, test_acc: 0.8788, test_auc: 0.8309
+Pruning Iter: 1, Iter: 89, recon_loss: 80.9015, ce_loss: 0.3084, acc: 0.8750, mse: 0.0156, val_loss: 0.2948, val_acc: 0.8891, val_auc: 0.8284, test_acc: 0.8788, test_auc: 0.8323
+Pruning Iter: 1, Iter: 90, recon_loss: 79.1067, ce_loss: 0.3079, acc: 0.8766, mse: 0.0153, val_loss: 0.2950, val_acc: 0.8828, val_auc: 0.8331, test_acc: 0.8812, test_auc: 0.8265
+Pruning Iter: 1, Iter: 91, recon_loss: 77.2762, ce_loss: 0.3113, acc: 0.8762, mse: 0.0150, val_loss: 0.2907, val_acc: 0.8875, val_auc: 0.8395, test_acc: 0.8775, test_auc: 0.8264
+Pruning Iter: 1, Iter: 92, recon_loss: 75.3891, ce_loss: 0.3077, acc: 0.8777, mse: 0.0146, val_loss: 0.2917, val_acc: 0.8906, val_auc: 0.8349, test_acc: 0.8812, test_auc: 0.8385
+Pruning Iter: 1, Iter: 93, recon_loss: 73.4117, ce_loss: 0.3082, acc: 0.8781, mse: 0.0143, val_loss: 0.2973, val_acc: 0.8797, val_auc: 0.8308, test_acc: 0.8775, test_auc: 0.8290
+Pruning Iter: 1, Iter: 94, recon_loss: 71.3964, ce_loss: 0.3054, acc: 0.8789, mse: 0.0139, val_loss: 0.2893, val_acc: 0.8922, val_auc: 0.8389, test_acc: 0.8775, test_auc: 0.8402
+Pruning Iter: 1, Iter: 95, recon_loss: 69.3688, ce_loss: 0.3034, acc: 0.8785, mse: 0.0135, val_loss: 0.2915, val_acc: 0.8812, val_auc: 0.8323, test_acc: 0.8800, test_auc: 0.8317
+Pruning Iter: 1, Iter: 96, recon_loss: 67.2756, ce_loss: 0.3045, acc: 0.8781, mse: 0.0132, val_loss: 0.2921, val_acc: 0.8844, val_auc: 0.8348, test_acc: 0.8825, test_auc: 0.8358
+Pruning Iter: 1, Iter: 97, recon_loss: 65.1799, ce_loss: 0.3044, acc: 0.8770, mse: 0.0128, val_loss: 0.2927, val_acc: 0.8875, val_auc: 0.8338, test_acc: 0.8812, test_auc: 0.8344
+Pruning Iter: 1, Iter: 98, recon_loss: 63.0293, ce_loss: 0.3050, acc: 0.8766, mse: 0.0124, val_loss: 0.2848, val_acc: 0.8859, val_auc: 0.8491, test_acc: 0.8725, test_auc: 0.8286
+Pruning Iter: 1, Iter: 99, recon_loss: 60.9582, ce_loss: 0.3034, acc: 0.8777, mse: 0.0120, val_loss: 0.2876, val_acc: 0.8844, val_auc: 0.8454, test_acc: 0.8800, test_auc: 0.8371
+Pruning Iter: 1, Iter: 100, recon_loss: 58.8111, ce_loss: 0.3065, acc: 0.8758, mse: 0.0117, val_loss: 0.2929, val_acc: 0.8859, val_auc: 0.8343, test_acc: 0.8762, test_auc: 0.8360
+Pruning Iter: 1, Iter: 101, recon_loss: 56.7202, ce_loss: 0.3056, acc: 0.8777, mse: 0.0113, val_loss: 0.2884, val_acc: 0.8875, val_auc: 0.8417, test_acc: 0.8825, test_auc: 0.8424
+Pruning Iter: 1, Iter: 102, recon_loss: 54.6764, ce_loss: 0.3045, acc: 0.8762, mse: 0.0109, val_loss: 0.2911, val_acc: 0.8812, val_auc: 0.8361, test_acc: 0.8775, test_auc: 0.8348
+Pruning Iter: 1, Iter: 103, recon_loss: 52.7932, ce_loss: 0.3049, acc: 0.8801, mse: 0.0106, val_loss: 0.2902, val_acc: 0.8906, val_auc: 0.8404, test_acc: 0.8812, test_auc: 0.8384
+Pruning Iter: 1, Iter: 104, recon_loss: 50.8940, ce_loss: 0.3035, acc: 0.8785, mse: 0.0103, val_loss: 0.2862, val_acc: 0.8859, val_auc: 0.8442, test_acc: 0.8775, test_auc: 0.8364
+Pruning Iter: 1, Iter: 105, recon_loss: 49.2111, ce_loss: 0.3014, acc: 0.8773, mse: 0.0100, val_loss: 0.2881, val_acc: 0.8906, val_auc: 0.8387, test_acc: 0.8800, test_auc: 0.8336
+Pruning Iter: 1, Iter: 106, recon_loss: 47.5598, ce_loss: 0.3033, acc: 0.8770, mse: 0.0097, val_loss: 0.2926, val_acc: 0.8891, val_auc: 0.8348, test_acc: 0.8825, test_auc: 0.8383
+Pruning Iter: 1, Iter: 107, recon_loss: 46.1256, ce_loss: 0.3052, acc: 0.8758, mse: 0.0094, val_loss: 0.2934, val_acc: 0.8859, val_auc: 0.8339, test_acc: 0.8762, test_auc: 0.8356
+Pruning Iter: 1, Iter: 108, recon_loss: 44.7710, ce_loss: 0.3046, acc: 0.8750, mse: 0.0092, val_loss: 0.2884, val_acc: 0.8797, val_auc: 0.8419, test_acc: 0.8775, test_auc: 0.8394
+Pruning Iter: 1, Iter: 109, recon_loss: 43.6278, ce_loss: 0.3021, acc: 0.8762, mse: 0.0090, val_loss: 0.2904, val_acc: 0.8844, val_auc: 0.8366, test_acc: 0.8788, test_auc: 0.8379
+Pruning Iter: 1, Iter: 110, recon_loss: 42.5647, ce_loss: 0.3040, acc: 0.8773, mse: 0.0088, val_loss: 0.2855, val_acc: 0.8797, val_auc: 0.8466, test_acc: 0.8788, test_auc: 0.8395
+Pruning Iter: 1, Iter: 111, recon_loss: 41.6674, ce_loss: 0.3029, acc: 0.8762, mse: 0.0087, val_loss: 0.2915, val_acc: 0.8812, val_auc: 0.8338, test_acc: 0.8750, test_auc: 0.8326
+Pruning Iter: 1, Iter: 112, recon_loss: 40.9359, ce_loss: 0.3031, acc: 0.8742, mse: 0.0085, val_loss: 0.2889, val_acc: 0.8797, val_auc: 0.8414, test_acc: 0.8788, test_auc: 0.8325
+Pruning Iter: 1, Iter: 113, recon_loss: 40.2365, ce_loss: 0.3031, acc: 0.8770, mse: 0.0084, val_loss: 0.2887, val_acc: 0.8781, val_auc: 0.8408, test_acc: 0.8800, test_auc: 0.8365
+Pruning Iter: 1, Iter: 114, recon_loss: 39.7450, ce_loss: 0.3023, acc: 0.8750, mse: 0.0084, val_loss: 0.2936, val_acc: 0.8781, val_auc: 0.8284, test_acc: 0.8762, test_auc: 0.8397
+Pruning Iter: 1, Iter: 115, recon_loss: 39.3191, ce_loss: 0.2988, acc: 0.8793, mse: 0.0083, val_loss: 0.2873, val_acc: 0.8828, val_auc: 0.8466, test_acc: 0.8750, test_auc: 0.8326
+Pruning Iter: 1, Iter: 116, recon_loss: 38.9895, ce_loss: 0.3013, acc: 0.8789, mse: 0.0082, val_loss: 0.2838, val_acc: 0.8891, val_auc: 0.8497, test_acc: 0.8788, test_auc: 0.8355
+Pruning Iter: 1, Iter: 117, recon_loss: 38.6215, ce_loss: 0.3005, acc: 0.8816, mse: 0.0082, val_loss: 0.2916, val_acc: 0.8844, val_auc: 0.8334, test_acc: 0.8788, test_auc: 0.8449
+Pruning Iter: 1, Iter: 118, recon_loss: 38.4642, ce_loss: 0.3011, acc: 0.8770, mse: 0.0082, val_loss: 0.2930, val_acc: 0.8766, val_auc: 0.8336, test_acc: 0.8775, test_auc: 0.8395
+Pruning Iter: 1, Iter: 119, recon_loss: 38.2547, ce_loss: 0.3011, acc: 0.8766, mse: 0.0081, val_loss: 0.2876, val_acc: 0.8875, val_auc: 0.8415, test_acc: 0.8812, test_auc: 0.8409
+Pruning Iter: 1, Iter: 120, recon_loss: 38.1201, ce_loss: 0.2999, acc: 0.8766, mse: 0.0081, val_loss: 0.2937, val_acc: 0.8812, val_auc: 0.8299, test_acc: 0.8825, test_auc: 0.8381
+Pruning Iter: 1, Iter: 121, recon_loss: 37.9968, ce_loss: 0.3011, acc: 0.8777, mse: 0.0081, val_loss: 0.2925, val_acc: 0.8859, val_auc: 0.8305, test_acc: 0.8775, test_auc: 0.8428
+Pruning Iter: 1, Iter: 122, recon_loss: 37.8564, ce_loss: 0.3005, acc: 0.8797, mse: 0.0081, val_loss: 0.2859, val_acc: 0.8828, val_auc: 0.8423, test_acc: 0.8850, test_auc: 0.8452
+Pruning Iter: 1, Iter: 123, recon_loss: 37.7261, ce_loss: 0.2991, acc: 0.8781, mse: 0.0081, val_loss: 0.2897, val_acc: 0.8875, val_auc: 0.8340, test_acc: 0.8800, test_auc: 0.8313
+Pruning Iter: 1, Iter: 124, recon_loss: 37.7094, ce_loss: 0.2982, acc: 0.8723, mse: 0.0081, val_loss: 0.2870, val_acc: 0.8797, val_auc: 0.8437, test_acc: 0.8738, test_auc: 0.8368
+Pruning Iter: 1, Iter: 125, recon_loss: 37.6704, ce_loss: 0.2990, acc: 0.8805, mse: 0.0080, val_loss: 0.2876, val_acc: 0.8812, val_auc: 0.8408, test_acc: 0.8788, test_auc: 0.8409
+Pruning Iter: 1, Iter: 126, recon_loss: 37.5208, ce_loss: 0.2994, acc: 0.8805, mse: 0.0080, val_loss: 0.2892, val_acc: 0.8844, val_auc: 0.8448, test_acc: 0.8700, test_auc: 0.8390
+Pruning Iter: 1, Iter: 127, recon_loss: 37.5696, ce_loss: 0.2983, acc: 0.8758, mse: 0.0080, val_loss: 0.2855, val_acc: 0.8875, val_auc: 0.8428, test_acc: 0.8725, test_auc: 0.8403
+Pruning Iter: 1, Iter: 128, recon_loss: 37.5259, ce_loss: 0.2974, acc: 0.8793, mse: 0.0080, val_loss: 0.2906, val_acc: 0.8812, val_auc: 0.8397, test_acc: 0.8775, test_auc: 0.8308
+Pruning Iter: 1, Iter: 129, recon_loss: 37.4127, ce_loss: 0.2988, acc: 0.8793, mse: 0.0080, val_loss: 0.2904, val_acc: 0.8812, val_auc: 0.8391, test_acc: 0.8788, test_auc: 0.8450
+Pruning Iter: 1, Iter: 130, recon_loss: 37.3791, ce_loss: 0.2968, acc: 0.8758, mse: 0.0080, val_loss: 0.2921, val_acc: 0.8812, val_auc: 0.8362, test_acc: 0.8725, test_auc: 0.8381
+Pruning Iter: 1, Iter: 131, recon_loss: 37.3583, ce_loss: 0.3010, acc: 0.8766, mse: 0.0080, val_loss: 0.2923, val_acc: 0.8844, val_auc: 0.8318, test_acc: 0.8850, test_auc: 0.8442
+Pruning Iter: 1, Iter: 132, recon_loss: 37.3653, ce_loss: 0.2960, acc: 0.8773, mse: 0.0080, val_loss: 0.2850, val_acc: 0.8875, val_auc: 0.8426, test_acc: 0.8750, test_auc: 0.8335
+Pruning Iter: 1, Iter: 133, recon_loss: 37.2743, ce_loss: 0.2980, acc: 0.8773, mse: 0.0080, val_loss: 0.2899, val_acc: 0.8828, val_auc: 0.8366, test_acc: 0.8800, test_auc: 0.8409
+Pruning Iter: 1, Iter: 134, recon_loss: 37.2588, ce_loss: 0.2953, acc: 0.8809, mse: 0.0080, val_loss: 0.2923, val_acc: 0.8844, val_auc: 0.8353, test_acc: 0.8738, test_auc: 0.8447
+Pruning Iter: 1, Iter: 135, recon_loss: 37.2246, ce_loss: 0.2976, acc: 0.8801, mse: 0.0080, val_loss: 0.2918, val_acc: 0.8859, val_auc: 0.8337, test_acc: 0.8725, test_auc: 0.8348
+Pruning Iter: 1, Iter: 136, recon_loss: 37.1507, ce_loss: 0.2974, acc: 0.8777, mse: 0.0080, val_loss: 0.2885, val_acc: 0.8812, val_auc: 0.8387, test_acc: 0.8762, test_auc: 0.8380
+Pruning Iter: 1, Iter: 137, recon_loss: 37.1346, ce_loss: 0.2962, acc: 0.8793, mse: 0.0079, val_loss: 0.2914, val_acc: 0.8828, val_auc: 0.8332, test_acc: 0.8762, test_auc: 0.8371
+Pruning Iter: 1, Iter: 138, recon_loss: 37.1238, ce_loss: 0.2972, acc: 0.8758, mse: 0.0079, val_loss: 0.2882, val_acc: 0.8953, val_auc: 0.8405, test_acc: 0.8738, test_auc: 0.8409
+Pruning Iter: 1, Iter: 139, recon_loss: 37.0330, ce_loss: 0.2990, acc: 0.8773, mse: 0.0079, val_loss: 0.2919, val_acc: 0.8781, val_auc: 0.8335, test_acc: 0.8700, test_auc: 0.8426
+Pruning Iter: 1, Iter: 140, recon_loss: 37.1243, ce_loss: 0.2961, acc: 0.8738, mse: 0.0079, val_loss: 0.2924, val_acc: 0.8828, val_auc: 0.8360, test_acc: 0.8800, test_auc: 0.8440
+Pruning Iter: 1, Iter: 141, recon_loss: 37.0149, ce_loss: 0.2974, acc: 0.8754, mse: 0.0079, val_loss: 0.2890, val_acc: 0.8859, val_auc: 0.8401, test_acc: 0.8788, test_auc: 0.8408
+Pruning Iter: 1, Iter: 142, recon_loss: 36.9853, ce_loss: 0.2950, acc: 0.8820, mse: 0.0079, val_loss: 0.2930, val_acc: 0.8844, val_auc: 0.8330, test_acc: 0.8775, test_auc: 0.8361
+Pruning Iter: 1, Iter: 143, recon_loss: 37.0483, ce_loss: 0.2966, acc: 0.8770, mse: 0.0079, val_loss: 0.2885, val_acc: 0.8812, val_auc: 0.8425, test_acc: 0.8750, test_auc: 0.8435
+Pruning Iter: 1, Iter: 144, recon_loss: 36.9360, ce_loss: 0.2962, acc: 0.8777, mse: 0.0079, val_loss: 0.2878, val_acc: 0.8859, val_auc: 0.8425, test_acc: 0.8788, test_auc: 0.8440
+Pruning Iter: 1, Iter: 145, recon_loss: 36.9460, ce_loss: 0.2987, acc: 0.8758, mse: 0.0079, val_loss: 0.2904, val_acc: 0.8828, val_auc: 0.8384, test_acc: 0.8800, test_auc: 0.8471
+Pruning Iter: 1, Iter: 146, recon_loss: 37.0075, ce_loss: 0.2957, acc: 0.8785, mse: 0.0079, val_loss: 0.2935, val_acc: 0.8797, val_auc: 0.8341, test_acc: 0.8812, test_auc: 0.8473
+Pruning Iter: 1, Iter: 147, recon_loss: 36.9257, ce_loss: 0.2968, acc: 0.8758, mse: 0.0079, val_loss: 0.2892, val_acc: 0.8875, val_auc: 0.8402, test_acc: 0.8825, test_auc: 0.8430
+Pruning Iter: 1, Iter: 148, recon_loss: 36.8844, ce_loss: 0.2968, acc: 0.8809, mse: 0.0079, val_loss: 0.2904, val_acc: 0.8859, val_auc: 0.8364, test_acc: 0.8750, test_auc: 0.8460
+Pruning Iter: 1, Iter: 149, recon_loss: 36.8724, ce_loss: 0.2974, acc: 0.8805, mse: 0.0079, val_loss: 0.2915, val_acc: 0.8875, val_auc: 0.8338, test_acc: 0.8800, test_auc: 0.8439
+Pruning Iter: 1, Iter: 150, recon_loss: 36.8409, ce_loss: 0.2944, acc: 0.8801, mse: 0.0079, val_loss: 0.2917, val_acc: 0.8891, val_auc: 0.8325, test_acc: 0.8800, test_auc: 0.8451
+Pruning Iter: 1, Iter: 151, recon_loss: 36.8571, ce_loss: 0.2973, acc: 0.8809, mse: 0.0079, val_loss: 0.2929, val_acc: 0.8891, val_auc: 0.8315, test_acc: 0.8788, test_auc: 0.8423
+Pruning Iter: 1, Iter: 152, recon_loss: 36.8578, ce_loss: 0.2967, acc: 0.8809, mse: 0.0079, val_loss: 0.2910, val_acc: 0.8844, val_auc: 0.8365, test_acc: 0.8788, test_auc: 0.8454
+Pruning Iter: 1, Iter: 153, recon_loss: 36.8428, ce_loss: 0.2969, acc: 0.8781, mse: 0.0079, val_loss: 0.2944, val_acc: 0.8859, val_auc: 0.8306, test_acc: 0.8762, test_auc: 0.8458
+Pruning Iter: 1, Iter: 154, recon_loss: 36.8317, ce_loss: 0.2950, acc: 0.8805, mse: 0.0079, val_loss: 0.2910, val_acc: 0.8844, val_auc: 0.8366, test_acc: 0.8775, test_auc: 0.8477
+Pruning Iter: 1, Iter: 155, recon_loss: 36.7630, ce_loss: 0.2936, acc: 0.8816, mse: 0.0079, val_loss: 0.2924, val_acc: 0.8828, val_auc: 0.8345, test_acc: 0.8800, test_auc: 0.8449
+Pruning Iter: 1, Iter: 156, recon_loss: 36.8157, ce_loss: 0.2960, acc: 0.8789, mse: 0.0079, val_loss: 0.2903, val_acc: 0.8812, val_auc: 0.8379, test_acc: 0.8800, test_auc: 0.8456
+Pruning Iter: 1, Iter: 157, recon_loss: 36.7813, ce_loss: 0.2947, acc: 0.8766, mse: 0.0079, val_loss: 0.2956, val_acc: 0.8812, val_auc: 0.8281, test_acc: 0.8812, test_auc: 0.8479
+Pruning Iter: 1, Iter: 158, recon_loss: 36.7360, ce_loss: 0.2960, acc: 0.8785, mse: 0.0079, val_loss: 0.2901, val_acc: 0.8875, val_auc: 0.8370, test_acc: 0.8800, test_auc: 0.8476
+Pruning Iter: 1, Iter: 159, recon_loss: 36.6191, ce_loss: 0.2947, acc: 0.8793, mse: 0.0078, val_loss: 0.2929, val_acc: 0.8812, val_auc: 0.8306, test_acc: 0.8775, test_auc: 0.8440
+Pruning Iter: 1, Iter: 160, recon_loss: 36.6399, ce_loss: 0.2968, acc: 0.8789, mse: 0.0078, val_loss: 0.2930, val_acc: 0.8828, val_auc: 0.8352, test_acc: 0.8775, test_auc: 0.8452
+Pruning Iter: 1, Iter: 161, recon_loss: 36.6203, ce_loss: 0.2924, acc: 0.8828, mse: 0.0078, val_loss: 0.2900, val_acc: 0.8812, val_auc: 0.8419, test_acc: 0.8788, test_auc: 0.8472
+Pruning Iter: 1, Iter: 162, recon_loss: 36.6095, ce_loss: 0.2942, acc: 0.8770, mse: 0.0078, val_loss: 0.2889, val_acc: 0.8828, val_auc: 0.8385, test_acc: 0.8812, test_auc: 0.8415
+Pruning Iter: 1, Iter: 163, recon_loss: 36.5842, ce_loss: 0.2944, acc: 0.8805, mse: 0.0078, val_loss: 0.2964, val_acc: 0.8766, val_auc: 0.8278, test_acc: 0.8800, test_auc: 0.8438
+Pruning Iter: 1, Iter: 164, recon_loss: 36.6276, ce_loss: 0.2956, acc: 0.8781, mse: 0.0078, val_loss: 0.2936, val_acc: 0.8859, val_auc: 0.8327, test_acc: 0.8788, test_auc: 0.8445
+Pruning Iter: 1, Iter: 165, recon_loss: 36.6069, ce_loss: 0.2956, acc: 0.8805, mse: 0.0078, val_loss: 0.2891, val_acc: 0.8859, val_auc: 0.8380, test_acc: 0.8812, test_auc: 0.8402
+Pruning Iter: 1, Iter: 166, recon_loss: 36.5189, ce_loss: 0.2930, acc: 0.8785, mse: 0.0078, val_loss: 0.2898, val_acc: 0.8828, val_auc: 0.8383, test_acc: 0.8775, test_auc: 0.8423
+Pruning Iter: 1, Iter: 167, recon_loss: 36.5487, ce_loss: 0.2942, acc: 0.8793, mse: 0.0078, val_loss: 0.2923, val_acc: 0.8797, val_auc: 0.8344, test_acc: 0.8750, test_auc: 0.8488
+Pruning Iter: 1, Iter: 168, recon_loss: 36.4728, ce_loss: 0.2941, acc: 0.8805, mse: 0.0078, val_loss: 0.2889, val_acc: 0.8875, val_auc: 0.8421, test_acc: 0.8750, test_auc: 0.8476
+Pruning Iter: 1, Iter: 169, recon_loss: 36.5471, ce_loss: 0.2960, acc: 0.8793, mse: 0.0078, val_loss: 0.2866, val_acc: 0.8844, val_auc: 0.8427, test_acc: 0.8788, test_auc: 0.8442
+Pruning Iter: 1, Iter: 170, recon_loss: 36.5176, ce_loss: 0.2961, acc: 0.8797, mse: 0.0078, val_loss: 0.2876, val_acc: 0.8891, val_auc: 0.8373, test_acc: 0.8800, test_auc: 0.8420
+Pruning Iter: 1, Iter: 171, recon_loss: 36.4621, ce_loss: 0.2917, acc: 0.8809, mse: 0.0078, val_loss: 0.2922, val_acc: 0.8859, val_auc: 0.8328, test_acc: 0.8725, test_auc: 0.8440
+Pruning Iter: 1, Iter: 172, recon_loss: 36.4663, ce_loss: 0.2937, acc: 0.8801, mse: 0.0078, val_loss: 0.2911, val_acc: 0.8828, val_auc: 0.8356, test_acc: 0.8750, test_auc: 0.8498
+Pruning Iter: 1, Iter: 173, recon_loss: 36.4242, ce_loss: 0.2952, acc: 0.8828, mse: 0.0078, val_loss: 0.2882, val_acc: 0.8891, val_auc: 0.8400, test_acc: 0.8800, test_auc: 0.8408
+Pruning Iter: 1, Iter: 174, recon_loss: 36.3899, ce_loss: 0.2944, acc: 0.8809, mse: 0.0078, val_loss: 0.2910, val_acc: 0.8828, val_auc: 0.8356, test_acc: 0.8700, test_auc: 0.8413
+Pruning Iter: 1, Iter: 175, recon_loss: 36.3771, ce_loss: 0.2933, acc: 0.8812, mse: 0.0078, val_loss: 0.2890, val_acc: 0.8906, val_auc: 0.8360, test_acc: 0.8738, test_auc: 0.8417
+Pruning Iter: 1, Iter: 176, recon_loss: 36.3365, ce_loss: 0.2938, acc: 0.8828, mse: 0.0078, val_loss: 0.2931, val_acc: 0.8781, val_auc: 0.8341, test_acc: 0.8788, test_auc: 0.8448
+Pruning Iter: 1, Iter: 177, recon_loss: 36.3567, ce_loss: 0.2931, acc: 0.8793, mse: 0.0078, val_loss: 0.2868, val_acc: 0.8875, val_auc: 0.8397, test_acc: 0.8762, test_auc: 0.8447
+Pruning Iter: 1, Iter: 178, recon_loss: 36.3324, ce_loss: 0.2921, acc: 0.8793, mse: 0.0078, val_loss: 0.2920, val_acc: 0.8844, val_auc: 0.8330, test_acc: 0.8762, test_auc: 0.8462
+Pruning Iter: 1, Iter: 179, recon_loss: 36.3074, ce_loss: 0.2926, acc: 0.8820, mse: 0.0078, val_loss: 0.2908, val_acc: 0.8859, val_auc: 0.8342, test_acc: 0.8812, test_auc: 0.8540
+Pruning Iter: 1, Iter: 180, recon_loss: 36.2244, ce_loss: 0.2943, acc: 0.8785, mse: 0.0078, val_loss: 0.2933, val_acc: 0.8828, val_auc: 0.8315, test_acc: 0.8800, test_auc: 0.8469
